@@ -1,0 +1,28 @@
+#!/bin/bash
+
+<<info
+this is function 
+info
+
+function is_check() {
+
+read -p "Who did $1 look back at?" bandi
+
+if [[ $bandi == daya ]]
+then
+	echo "$1 is loyal"
+elif [[ $bandi != daya ]]
+then
+	read -p "how much % $1 love $bandi: " pyaar
+	if [[ $pyaar -ge 100 ]]
+	then 
+		echo "$1 is loyal"
+	else
+		echo "$1 is not loyal"
+	fi
+else
+	echo "$1 is not loyal"
+fi
+}
+
+is_check "tom"
