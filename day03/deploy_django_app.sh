@@ -6,7 +6,7 @@ info
 
 set -e   # Stop script if any command fails
 
-REPO_URL="git@github.com:yashgondaliy/django-notes-app.git"
+REPO_URL="https://github.com/yashgondaliy/django-notes-app.git"
 APP_DIR="django-notes-app"
 IMAGE_NAME="notes-app"
 CONTAINER_NAME="notes-container"
