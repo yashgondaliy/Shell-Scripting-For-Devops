@@ -1,63 +1,12 @@
 #!/bin/bash
 
-<<info 
-deploy django app and handle the code error
-info
-
-<<testcode
-
-clone_code(){
-	echo "cloning the Django app..."
-	git clone git@github.com:yashgondaliy/django-notes-app.git
-}
-
-install_requirement(){
-	echo "instaling dependencies"
-	sudo apt-get install docker.io nginx -y
-}
-
-required_restart(){
-	sudo chown $USER /var/run/docker.sock
-	sudo systemctl enable docker
-	sudo systemctl enable nginx
-	sudo systemctl restart docker
-}
-
-deploy(){
-	docker build -t notes-app .
-	docker run -d -p 8000:8000 notes-app:latest
-}
-
-echo "*************** DEPLOYMENT STARTED ****************"
-
-if ! clone_code; then
-	echo "folder is already installed"
-	cd django-notes-app
-fi
-
-if ! install_requirement; then
-	echo "Installation failed"
-	exit 1
-fi
-
-if ! required_restart; then
-	echo "system fault identified"
-	exit 1
-fi
-deploy
-
-echo "************** DEPLOYMENT DONE *******************"
-
-testcode
-
-
 <<info
 Deploy Django App using Docker
 info
 
 set -e   # Stop script if any command fails
 
-REPO_URL="https://github.com/LondheShubham153/django-notes-app.git"
+REPO_URL="git@github.com:yashgondaliy/django-notes-app.git"
 APP_DIR="django-notes-app"
 IMAGE_NAME="notes-app"
 CONTAINER_NAME="notes-container"
