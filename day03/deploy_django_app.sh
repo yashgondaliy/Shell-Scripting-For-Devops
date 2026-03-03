@@ -8,7 +8,7 @@ info
 
 clone_code(){
 	echo "cloning the Django app..."
-	git clone https://github.com/LondheShubham153/django-notes-app.git
+	git clone git@github.com:yashgondaliy/django-notes-app.git
 }
 
 install_requirement(){
